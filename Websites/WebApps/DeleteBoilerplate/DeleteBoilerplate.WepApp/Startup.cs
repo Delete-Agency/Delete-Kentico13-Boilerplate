@@ -1,3 +1,4 @@
+using DeleteBoilerplate.WepApp.Controllers;
 using Kentico.Content.Web.Mvc;
 using Kentico.Content.Web.Mvc.Routing;
 using Kentico.Web.Mvc;
@@ -70,14 +71,15 @@ namespace DeleteBoilerplate.WepApp
             // app.UseAuthentication();
             // app.UseAuthorization();
 
+            app.UseRouting();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.Kentico().MapRoutes();
 
-                endpoints.MapGet("/", async context =>
-                {
-                    await context.Response.WriteAsync("The site has not been configured yet.");
-                });
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
