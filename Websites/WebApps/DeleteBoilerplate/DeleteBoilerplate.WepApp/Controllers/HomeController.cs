@@ -1,8 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using DeleteBoilerplate.WepApp.Controllers;
+
+using CMS.DocumentEngine.Types.DeleteBoilerplate;
+
+using Kentico.Content.Web.Mvc;
+using Kentico.Content.Web.Mvc.Routing;
+
 using Microsoft.AspNetCore.Mvc;
+
+[assembly: RegisterPageRoute(HomePage.CLASS_NAME, typeof(HomeController))]
 
 namespace DeleteBoilerplate.WepApp.Controllers
 {
