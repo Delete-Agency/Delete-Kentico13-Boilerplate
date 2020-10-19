@@ -59,6 +59,7 @@ _ReSharper*/
 
 packages/
 node_modules/
+lib/
 
 **/tools/Addins/**
 **/Published/**
