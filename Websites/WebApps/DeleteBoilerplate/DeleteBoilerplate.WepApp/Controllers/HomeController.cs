@@ -7,7 +7,7 @@ using Kentico.Content.Web.Mvc.Routing;
 
 using Microsoft.AspNetCore.Mvc;
 
-[assembly: RegisterPageRoute(HomePage.CLASS_NAME, typeof(HomeController))]
+[assembly: RegisterPageRoute(Home.CLASS_NAME, typeof(HomeController))]
 
 namespace DeleteBoilerplate.WepApp.Controllers
 {
