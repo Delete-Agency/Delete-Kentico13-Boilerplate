@@ -1,13 +1,24 @@
+using CMS.Helpers;
 using DeleteBoilerplate.WepApp.Controllers;
 using Kentico.Content.Web.Mvc;
 using Kentico.Content.Web.Mvc.Routing;
+using Kentico.Membership;
+using Kentico.PageBuilder.Web.Mvc;
 using Kentico.Web.Mvc;
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Localization.Routing;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Abstractions;
+using Microsoft.AspNetCore.Mvc.Routing;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
+using System.Threading.Tasks;
 
 namespace DeleteBoilerplate.WepApp
 {
@@ -30,14 +41,14 @@ namespace DeleteBoilerplate.WepApp
             var kenticoServiceCollection = services.AddKentico(features =>
             {
                 features.UsePreview();
-                // features.UsePageBuilder();
+                features.UsePageBuilder();
                 // features.UseActivityTracking();
                 // features.UseABTesting();
                 // features.UseWebAnalytics();
                 // features.UseEmailTracking();
                 // features.UseCampaignLogger();
                 // features.UseScheduler();
-                // features.UsePageRouting();
+                features.UsePageRouting();
             });
 
             if (Environment.IsDevelopment())
@@ -50,6 +61,8 @@ namespace DeleteBoilerplate.WepApp
             }
 
             services.AddControllersWithViews();
+
+            ConfigureMembershipServices(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -64,12 +77,12 @@ namespace DeleteBoilerplate.WepApp
 
             app.UseKentico();
 
-            app.UseCookiePolicy();
+            //app.UseCookiePolicy();
 
             app.UseCors();
 
-            // app.UseAuthentication();
-            // app.UseAuthorization();
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseRouting();
 
@@ -81,6 +94,49 @@ namespace DeleteBoilerplate.WepApp
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+        }
+
+        private static void ConfigureMembershipServices(IServiceCollection services)
+        {
+            services.AddScoped<IPasswordHasher<ApplicationUser>, Kentico.Membership.PasswordHasher<ApplicationUser>>();
+            services.AddApplicationIdentity<ApplicationUser, ApplicationRole>(options =>
+            {
+                // Note: These settings are effective only when password policies are turned off in the administration settings.
+                options.Password.RequireDigit = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequiredLength = 0;
+                options.Password.RequireUppercase = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequiredUniqueChars = 0;
+            })
+                    .AddApplicationDefaultTokenProviders()
+                    .AddUserStore<ApplicationUserStore<ApplicationUser>>()
+                    .AddRoleStore<ApplicationRoleStore<ApplicationRole>>()
+                    .AddUserManager<ApplicationUserManager<ApplicationUser>>()
+                    .AddSignInManager<SignInManager<ApplicationUser>>();
+
+            services.AddAuthorization();
+            services.AddAuthentication();
+
+            services.ConfigureApplicationCookie(c =>
+            {
+                c.Events.OnRedirectToLogin = ctx =>
+                {
+                    // Redirects to login page respecting the current culture
+                    var factory = ctx.HttpContext.RequestServices.GetRequiredService<IUrlHelperFactory>();
+                    var urlHelper = factory.GetUrlHelper(new ActionContext(ctx.HttpContext, new RouteData(ctx.HttpContext.Request.RouteValues), new ActionDescriptor()));
+                    var url = urlHelper.Action("Login", "Account");
+
+                    ctx.Response.Redirect(url);
+
+                    return Task.CompletedTask;
+                };
+                c.ExpireTimeSpan = TimeSpan.FromDays(14);
+                c.SlidingExpiration = true;
+                c.Cookie.Name = "identity.authentication";
+            });
+
+            CookieHelper.RegisterCookie("identity.authentication", CookieLevel.Essential);
         }
     }
 }
