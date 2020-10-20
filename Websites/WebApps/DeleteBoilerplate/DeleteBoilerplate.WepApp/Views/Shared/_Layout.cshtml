@@ -5,11 +5,11 @@
     </head>
     <body>
         <div>
-            <!--HEADER-->
+            @await Component.InvokeAsync("Header")
 
             @RenderBody()
 
-            <!--FOOTER-->
+            @await Component.InvokeAsync("Footer")
         </div>
     </body>
 </html>
