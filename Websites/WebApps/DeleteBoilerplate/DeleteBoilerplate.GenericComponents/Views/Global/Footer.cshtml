@@ -1,0 +1,13 @@
+﻿@model DeleteBoilerplate.GenericComponents.Models.Footer.FooterViewModel;
+
+<p><b>@Model.Text</b></p>
+<p>
+    <ul>
+        @foreach (var socialLink in Model.SocialLinks)
+        {
+            <li>@socialLink.Title</li>
+        }
+    </ul>
+</p>
+
+

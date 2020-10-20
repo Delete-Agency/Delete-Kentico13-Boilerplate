@@ -7,7 +7,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeleteBoilerplate.WepApp", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{1890D5EE-50EE-464C-8C72-FB3E40273A5B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeleteBoilerplate.Domain", "..\..\..\Shared\DeleteBoilerplate.Domain\DeleteBoilerplate.Domain.csproj", "{91983DC0-C647-4F17-AC92-2DD57C9F2EF4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeleteBoilerplate.Domain", "..\..\..\Shared\DeleteBoilerplate.Domain\DeleteBoilerplate.Domain.csproj", "{91983DC0-C647-4F17-AC92-2DD57C9F2EF4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Features", "Features", "{DB0CB742-70B3-4F8A-83CA-686450C2B13B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeleteBoilerplate.GenericComponents", "DeleteBoilerplate.GenericComponents\DeleteBoilerplate.GenericComponents.csproj", "{1D53E724-DD06-447A-B250-94247173AA16}"
+	ProjectSection(ProjectDependencies) = postProject
+		{91983DC0-C647-4F17-AC92-2DD57C9F2EF4} = {91983DC0-C647-4F17-AC92-2DD57C9F2EF4}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,12 +30,17 @@ Global
 		{91983DC0-C647-4F17-AC92-2DD57C9F2EF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{91983DC0-C647-4F17-AC92-2DD57C9F2EF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{91983DC0-C647-4F17-AC92-2DD57C9F2EF4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D53E724-DD06-447A-B250-94247173AA16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D53E724-DD06-447A-B250-94247173AA16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D53E724-DD06-447A-B250-94247173AA16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D53E724-DD06-447A-B250-94247173AA16}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{91983DC0-C647-4F17-AC92-2DD57C9F2EF4} = {1890D5EE-50EE-464C-8C72-FB3E40273A5B}
+		{1D53E724-DD06-447A-B250-94247173AA16} = {DB0CB742-70B3-4F8A-83CA-686450C2B13B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {84955D32-C8B8-4093-806B-FC9DBDD582B5}
