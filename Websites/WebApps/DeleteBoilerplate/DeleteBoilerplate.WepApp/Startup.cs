@@ -19,6 +19,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Threading.Tasks;
+using DeleteBoilerplate.Domain.Repositories;
+using DeleteBoilerplate.WepApp.Extensions;
 
 namespace DeleteBoilerplate.WepApp
 {
@@ -37,6 +39,8 @@ namespace DeleteBoilerplate.WepApp
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDeleteBoilerplateDependencies();
+
             // Enable desired Kentico Xperience features
             var kenticoServiceCollection = services.AddKentico(features =>
             {
