@@ -11,10 +11,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeleteBoilerplate.Domain", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Features", "Features", "{DB0CB742-70B3-4F8A-83CA-686450C2B13B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeleteBoilerplate.GenericComponents", "DeleteBoilerplate.GenericComponents\DeleteBoilerplate.GenericComponents.csproj", "{1D53E724-DD06-447A-B250-94247173AA16}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeleteBoilerplate.GenericComponents", "DeleteBoilerplate.GenericComponents\DeleteBoilerplate.GenericComponents.csproj", "{1D53E724-DD06-447A-B250-94247173AA16}"
 	ProjectSection(ProjectDependencies) = postProject
 		{91983DC0-C647-4F17-AC92-2DD57C9F2EF4} = {91983DC0-C647-4F17-AC92-2DD57C9F2EF4}
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{1EF22813-51BC-4930-A280-8DF21F55CD87}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeleteBoilerplate.Infrastructure", "..\..\Infrastructure\DeleteBoilerplate.Infrastructure\DeleteBoilerplate.Infrastructure.csproj", "{04B581A8-6E63-467E-AFEE-B39722D65FFC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,6 +38,10 @@ Global
 		{1D53E724-DD06-447A-B250-94247173AA16}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1D53E724-DD06-447A-B250-94247173AA16}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1D53E724-DD06-447A-B250-94247173AA16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04B581A8-6E63-467E-AFEE-B39722D65FFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04B581A8-6E63-467E-AFEE-B39722D65FFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04B581A8-6E63-467E-AFEE-B39722D65FFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04B581A8-6E63-467E-AFEE-B39722D65FFC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -41,6 +49,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{91983DC0-C647-4F17-AC92-2DD57C9F2EF4} = {1890D5EE-50EE-464C-8C72-FB3E40273A5B}
 		{1D53E724-DD06-447A-B250-94247173AA16} = {DB0CB742-70B3-4F8A-83CA-686450C2B13B}
+		{04B581A8-6E63-467E-AFEE-B39722D65FFC} = {1EF22813-51BC-4930-A280-8DF21F55CD87}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {84955D32-C8B8-4093-806B-FC9DBDD582B5}
