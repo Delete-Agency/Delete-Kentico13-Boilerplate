@@ -21,6 +21,8 @@ using System;
 using System.Threading.Tasks;
 using DeleteBoilerplate.Domain.Repositories;
 using DeleteBoilerplate.WepApp.Extensions;
+using AutoMapper;
+using DeleteBoilerplate.WepApp.Automap;
 
 namespace DeleteBoilerplate.WepApp
 {
@@ -64,6 +66,7 @@ namespace DeleteBoilerplate.WepApp
                 kenticoServiceCollection.SetAdminCookiesSameSiteNone();
             }
 
+            services.AddAutoMapper();
             services.AddControllersWithViews();
 
             ConfigureMembershipServices(services);

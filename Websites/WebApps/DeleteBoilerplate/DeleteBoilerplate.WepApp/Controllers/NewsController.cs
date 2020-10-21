@@ -1,7 +1,9 @@
-﻿using CMS.DocumentEngine;
+﻿using AutoMapper;
+using CMS.DocumentEngine;
 using CMS.DocumentEngine.Types.DeleteBoilerplate;
 using DeleteBoilerplate.Infrastructure.Controllers;
 using DeleteBoilerplate.WepApp.Controllers;
+using DeleteBoilerplate.WepApp.Models.News;
 using Kentico.Content.Web.Mvc;
 using Kentico.Content.Web.Mvc.Routing;
 using Microsoft.AspNetCore.Mvc;
@@ -12,20 +14,17 @@ namespace DeleteBoilerplate.WepApp.Controllers
 {
     public class NewsController : BaseController
     {
-        private readonly IPageDataContextRetriever PageDataContextRetriever;
+    
 
-        public NewsController(IPageDataContextRetriever pageDataContextRetriever)
-            :base(pageDataContextRetriever)
+        public NewsController(IPageDataContextRetriever pageDataContextRetriever, IMapper mapper)
+            :base(pageDataContextRetriever, mapper)
         {
-            PageDataContextRetriever = pageDataContextRetriever;
         }
 
         public IActionResult Index()
         {
-            var contentItem = GetContextItem<NewsPage>();
-            string title = contentItem.TitleNews;
-
-            return View("Index", title);
+            var model = GetContextItemViewModel<NewsPage, NewsPageViewModel>();
+            return View("Index", model);
         }
     }
 }
