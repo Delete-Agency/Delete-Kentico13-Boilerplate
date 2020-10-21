@@ -15,8 +15,7 @@ namespace DeleteBoilerplate.Infrastructure.Controllers
 
         protected virtual T GetContextItem<T>() where T : TreeNode, new()
         {
-            var contectItem = PageDataContextRetriever.Retrieve<T>().Page;
-            return contectItem;
+            return PageDataContextRetriever.Retrieve<T>().Page;
         }
     }
 }

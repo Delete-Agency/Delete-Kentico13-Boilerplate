@@ -1,5 +1,6 @@
 ﻿using CMS.DocumentEngine;
 using CMS.DocumentEngine.Types.DeleteBoilerplate;
+using DeleteBoilerplate.Infrastructure.Controllers;
 using DeleteBoilerplate.WepApp.Controllers;
 using Kentico.Content.Web.Mvc;
 using Kentico.Content.Web.Mvc.Routing;
@@ -9,22 +10,22 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DeleteBoilerplate.WepApp.Controllers
 {
-    public class NewsController : Controller
+    public class NewsController : BaseController
     {
         private readonly IPageDataContextRetriever PageDataContextRetriever;
 
         public NewsController(IPageDataContextRetriever pageDataContextRetriever)
+            :base(pageDataContextRetriever)
         {
             PageDataContextRetriever = pageDataContextRetriever;
         }
 
         public IActionResult Index()
         {
-            var contentItem = PageDataContextRetriever.Retrieve<TreeNode>().Page;
+            var contentItem = GetContextItem<NewsPage>();
+            string title = contentItem.TitleNews;
 
-            var contentNews = PageDataContextRetriever.Retrieve<NewsPage>().Page;
-
-            return View();
+            return View("Index", title);
         }
     }
 }
