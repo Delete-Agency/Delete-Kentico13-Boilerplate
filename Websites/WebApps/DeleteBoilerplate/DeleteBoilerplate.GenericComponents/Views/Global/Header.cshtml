@@ -1,7 +1,16 @@
 ﻿@model DeleteBoilerplate.GenericComponents.Models.Header.HeaderViewModel;
 
 <header>
+    <p><b>@Model.Text</b></p>
     <p>
-        <b>@Model.Text</b>
+        <ul>
+            @if (Model.SocialLinks.Any())
+            {
+                foreach (var socialLink in Model.SocialLinks)
+                {
+                    <li><a href="@socialLink.Url"><img src="@socialLink.Icon" alt="@socialLink.Title" width="45" height="45" /></a></li>
+                }
+            }
+        </ul>
     </p>
 </header>

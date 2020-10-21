@@ -4,9 +4,12 @@
     <p><b>@Model.Text</b></p>
     <p>
         <ul>
-            @foreach (var socialLink in Model.SocialLinks)
+            @if (Model.SocialLinks.Any())
             {
-                <li>@socialLink.Title</li>
+                foreach (var socialLink in Model.SocialLinks)
+                {
+                    <li><a href="@socialLink.Url"><img src="@socialLink.Icon" alt="@socialLink.Title" width="45" height="45" /></a></li>
+                }
             }
         </ul>
     </p>

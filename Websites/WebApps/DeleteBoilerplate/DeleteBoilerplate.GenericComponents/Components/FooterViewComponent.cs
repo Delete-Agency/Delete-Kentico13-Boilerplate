@@ -28,14 +28,14 @@ namespace DeleteBoilerplate.GenericComponents.Components
                     Name = x.Name,
                     Title = x.Title,
                     Url = x.Url,
-                    Icon = x.Fields.Icon.AttachmentUrl
+                    Icon = x.Fields.Icon.AttachmentName
                 })
                 .ToList();
 
             var footerViewModel = new FooterViewModel
             {
                 SocialLinks = socialLinks,
-                Text = "This is Footer"
+                Text = "Footer Section"
             };
 
             return View("~/Views/Global/Footer.cshtml", footerViewModel);
