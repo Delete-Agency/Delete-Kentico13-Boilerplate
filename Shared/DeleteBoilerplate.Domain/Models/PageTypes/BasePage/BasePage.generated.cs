@@ -63,18 +63,18 @@ namespace CMS.DocumentEngine.Types.DeleteBoilerplate
 
 
 		/// <summary>
-		/// CustormField.
+		/// Base Page Field.
 		/// </summary>
 		[DatabaseField]
-		public string CustormField
+		public string BasePageField
 		{
 			get
 			{
-				return ValidationHelper.GetString(GetValue("CustormField"), @"");
+				return ValidationHelper.GetString(GetValue("BasePageField"), @"");
 			}
 			set
 			{
-				SetValue("CustormField", value);
+				SetValue("BasePageField", value);
 			}
 		}
 
@@ -131,17 +131,17 @@ namespace CMS.DocumentEngine.Types.DeleteBoilerplate
 
 
 			/// <summary>
-			/// CustormField.
+			/// Base Page Field.
 			/// </summary>
-			public string CustormField
+			public string Field
 			{
 				get
 				{
-					return mInstance.CustormField;
+					return mInstance.BasePageField;
 				}
 				set
 				{
-					mInstance.CustormField = value;
+					mInstance.BasePageField = value;
 				}
 			}
 		}

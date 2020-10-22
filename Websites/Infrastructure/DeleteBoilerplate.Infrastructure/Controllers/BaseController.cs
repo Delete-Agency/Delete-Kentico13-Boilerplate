@@ -7,14 +7,14 @@ namespace DeleteBoilerplate.Infrastructure.Controllers
 {
     public class BaseController : Controller
     {
-        private readonly IMapper Mapper;
+        public readonly IMapper Mapper;
 
-        private readonly IPageDataContextRetriever PageDataContextRetriever;
+        public readonly IPageDataContextRetriever PageDataContextRetriever;
 
-        public BaseController(IPageDataContextRetriever pageDataContextRetriever, IMapper mapper)
+        public BaseController(IMapper mapper, IPageDataContextRetriever pageDataContextRetriever)
         {
-            this.PageDataContextRetriever = pageDataContextRetriever;
             this.Mapper = mapper;
+            this.PageDataContextRetriever = pageDataContextRetriever;
         }
 
         protected virtual TPageType GetContextItem<TPageType>() where TPageType : TreeNode, new()

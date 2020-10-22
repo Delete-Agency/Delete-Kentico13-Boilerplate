@@ -6,6 +6,8 @@
 
   <ItemGroup>
     <Folder Include="Models\PageTypes\BasePage\" />
+    <Folder Include="Models\PageTypes\Blog\" />
+    <Folder Include="Models\PageTypes\BlogArticle\" />
   </ItemGroup>
 
   <ItemGroup>
