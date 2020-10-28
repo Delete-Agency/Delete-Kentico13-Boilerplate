@@ -14,7 +14,6 @@
     <ProjectReference Include="..\..\..\..\Shared\DeleteBoilerplate.Domain\DeleteBoilerplate.Domain.csproj" />
     <ProjectReference Include="..\..\..\Infrastructure\DeleteBoilerplate.Infrastructure\DeleteBoilerplate.Infrastructure.csproj" />
     <ProjectReference Include="..\DeleteBoilerplate.GenericComponents\DeleteBoilerplate.GenericComponents.csproj" />
-    <ProjectReference Include="..\Features\DeleteBoilerplate.Blogs\DeleteBoilerplate.Blogs.csproj" />
   </ItemGroup>
 
 </Project>

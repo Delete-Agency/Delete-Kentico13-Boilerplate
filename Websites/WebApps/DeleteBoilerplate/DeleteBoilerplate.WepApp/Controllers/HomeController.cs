@@ -23,6 +23,10 @@ namespace DeleteBoilerplate.WepApp.Controllers
 
         public IActionResult Index()
         {
+            PageDataContextRetriever.TryRetrieve<Home>(out var pageDataContext);
+
+            var node = PageDataContextRetriever.Retrieve<TreeNode>().Page;
+
             return View();
         }
 
