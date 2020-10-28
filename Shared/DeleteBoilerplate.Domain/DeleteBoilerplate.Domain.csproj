@@ -10,12 +10,14 @@
     <Folder Include="Models\PageTypes\BlogArticle\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Kentico.Xperience.AspNetCore.WebApp" Version="13.0.0-build19400" />
-  </ItemGroup>
 
   <ItemGroup>
     <AssemblyAttribute Include="CMS.AssemblyDiscoverableAttribute">
     </AssemblyAttribute>
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="Kentico.Xperience.AspNetCore.WebApp" Version="13.0.0" />
   </ItemGroup>
 </Project>

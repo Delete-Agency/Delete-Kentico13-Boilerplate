@@ -6,7 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.1.1" />
-    <PackageReference Include="Kentico.Xperience.AspNetCore.WebApp" Version="13.0.0-build19400" />
+    <PackageReference Include="Kentico.Xperience.AspNetCore.WebApp" Version="13.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
   </ItemGroup>
 

@@ -15,7 +15,6 @@ namespace DeleteBoilerplate.WepApp
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder
-                        //.UseIISIntegration()
                         .UseStartup<Startup>();
                 });
     }

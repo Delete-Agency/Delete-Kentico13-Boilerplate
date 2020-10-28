@@ -30,15 +30,11 @@ namespace DeleteBoilerplate.WepApp
     {
         public IWebHostEnvironment Environment { get; }
 
-
         public Startup(IWebHostEnvironment environment)
         {
             Environment = environment;
         }
 
-
-        // This method gets called by the runtime. Use this method to add services to the container.
-        // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDeleteBoilerplateDependencies();
@@ -46,7 +42,6 @@ namespace DeleteBoilerplate.WepApp
             // Enable desired Kentico Xperience features
             var kenticoServiceCollection = services.AddKentico(features =>
             {
-                features.UsePreview();
                 features.UsePageBuilder();
                 // features.UseActivityTracking();
                 // features.UseABTesting();
@@ -64,13 +59,22 @@ namespace DeleteBoilerplate.WepApp
                 // only applies when communicating with the Xperience administration via preview links. Both applications also need 
                 // to use a secure connection (HTTPS) to ensure cookies are not rejected by the client.
                 kenticoServiceCollection.SetAdminCookiesSameSiteNone();
+
+                // By default, Xperience requires a secure connection (HTTPS) if administration and live site applications
+                // are hosted on separate domains. This configuration simplifies the initial setup of the development
+                // or evaluation environment without a the need for secure connection. The system ignores authentication
+                // cookies and this information is taken from the URL.
+                kenticoServiceCollection.DisableVirtualContextSecurityForLocalhost();
             }
 
             services.AddAutoMapper();
-            services.AddControllersWithViews();
 
-            ConfigureMembershipServices(services);
+            services.AddAuthentication();
+            // services.AddAuthorization();
+
+            services.AddControllersWithViews();
         }
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app)
@@ -84,66 +88,21 @@ namespace DeleteBoilerplate.WepApp
 
             app.UseKentico();
 
-            //app.UseCookiePolicy();
+            app.UseCookiePolicy();
 
             app.UseCors();
 
             app.UseAuthentication();
-            app.UseAuthorization();
-
-            app.UseRouting();
+            // app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.Kentico().MapRoutes();
 
                 endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                        name: "default",
+                        pattern: "{controller=Home}/{action=Index}/{id?}");
             });
-        }
-
-        private static void ConfigureMembershipServices(IServiceCollection services)
-        {
-            services.AddScoped<IPasswordHasher<ApplicationUser>, Kentico.Membership.PasswordHasher<ApplicationUser>>();
-            services.AddApplicationIdentity<ApplicationUser, ApplicationRole>(options =>
-            {
-                // Note: These settings are effective only when password policies are turned off in the administration settings.
-                options.Password.RequireDigit = false;
-                options.Password.RequireNonAlphanumeric = false;
-                options.Password.RequiredLength = 0;
-                options.Password.RequireUppercase = false;
-                options.Password.RequireLowercase = false;
-                options.Password.RequiredUniqueChars = 0;
-            })
-                    .AddApplicationDefaultTokenProviders()
-                    .AddUserStore<ApplicationUserStore<ApplicationUser>>()
-                    .AddRoleStore<ApplicationRoleStore<ApplicationRole>>()
-                    .AddUserManager<ApplicationUserManager<ApplicationUser>>()
-                    .AddSignInManager<SignInManager<ApplicationUser>>();
-
-            services.AddAuthorization();
-            services.AddAuthentication();
-
-            services.ConfigureApplicationCookie(c =>
-            {
-                c.Events.OnRedirectToLogin = ctx =>
-                {
-                    // Redirects to login page respecting the current culture
-                    var factory = ctx.HttpContext.RequestServices.GetRequiredService<IUrlHelperFactory>();
-                    var urlHelper = factory.GetUrlHelper(new ActionContext(ctx.HttpContext, new RouteData(ctx.HttpContext.Request.RouteValues), new ActionDescriptor()));
-                    var url = urlHelper.Action("Login", "Account");
-
-                    ctx.Response.Redirect(url);
-
-                    return Task.CompletedTask;
-                };
-                c.ExpireTimeSpan = TimeSpan.FromDays(14);
-                c.SlidingExpiration = true;
-                c.Cookie.Name = "identity.authentication";
-            });
-
-            CookieHelper.RegisterCookie("identity.authentication", CookieLevel.Essential);
         }
     }
 }
