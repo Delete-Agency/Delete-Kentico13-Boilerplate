@@ -63,35 +63,18 @@ namespace CMS.DocumentEngine.Types.DeleteBoilerplate
 
 
 		/// <summary>
-		/// Base Page Field.
+		/// Name.
 		/// </summary>
 		[DatabaseField]
-		public string BasePageField
+		public string Name
 		{
 			get
 			{
-				return ValidationHelper.GetString(GetValue("BasePageField"), @"");
+				return ValidationHelper.GetString(GetValue("Name"), @"");
 			}
 			set
 			{
-				SetValue("BasePageField", value);
-			}
-		}
-
-
-		/// <summary>
-		/// Title.
-		/// </summary>
-		[DatabaseField]
-		public string Title
-		{
-			get
-			{
-				return ValidationHelper.GetString(GetValue("Title"), @"");
-			}
-			set
-			{
-				SetValue("Title", value);
+				SetValue("Name", value);
 			}
 		}
 
@@ -109,6 +92,40 @@ namespace CMS.DocumentEngine.Types.DeleteBoilerplate
 			set
 			{
 				SetValue("Description", value);
+			}
+		}
+
+
+		/// <summary>
+		/// Include in sitemap.
+		/// </summary>
+		[DatabaseField]
+		public bool IncludeInSitemap
+		{
+			get
+			{
+				return ValidationHelper.GetBoolean(GetValue("IncludeInSitemap"), true);
+			}
+			set
+			{
+				SetValue("IncludeInSitemap", value);
+			}
+		}
+
+
+		/// <summary>
+		/// Sitemap priority.
+		/// </summary>
+		[DatabaseField]
+		public decimal SitemapPriority
+		{
+			get
+			{
+				return ValidationHelper.GetDecimal(GetValue("SitemapPriority"), ValidationHelper.GetDecimal("0.5", 0));
+			}
+			set
+			{
+				SetValue("SitemapPriority", value);
 			}
 		}
 
@@ -165,33 +182,17 @@ namespace CMS.DocumentEngine.Types.DeleteBoilerplate
 
 
 			/// <summary>
-			/// Base Page Field.
+			/// Name.
 			/// </summary>
-			public string BasePageField
+			public string Name
 			{
 				get
 				{
-					return mInstance.BasePageField;
+					return mInstance.Name;
 				}
 				set
 				{
-					mInstance.BasePageField = value;
-				}
-			}
-
-
-			/// <summary>
-			/// Title.
-			/// </summary>
-			public string Title
-			{
-				get
-				{
-					return mInstance.Title;
-				}
-				set
-				{
-					mInstance.Title = value;
+					mInstance.Name = value;
 				}
 			}
 
@@ -208,6 +209,38 @@ namespace CMS.DocumentEngine.Types.DeleteBoilerplate
 				set
 				{
 					mInstance.Description = value;
+				}
+			}
+
+
+			/// <summary>
+			/// Include in sitemap.
+			/// </summary>
+			public bool IncludeInSitemap
+			{
+				get
+				{
+					return mInstance.IncludeInSitemap;
+				}
+				set
+				{
+					mInstance.IncludeInSitemap = value;
+				}
+			}
+
+
+			/// <summary>
+			/// Sitemap priority.
+			/// </summary>
+			public decimal SitemapPriority
+			{
+				get
+				{
+					return mInstance.SitemapPriority;
+				}
+				set
+				{
+					mInstance.SitemapPriority = value;
 				}
 			}
 		}

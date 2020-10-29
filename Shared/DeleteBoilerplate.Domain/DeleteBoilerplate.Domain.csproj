@@ -8,6 +8,7 @@
     <Folder Include="Models\PageTypes\BasePage\" />
     <Folder Include="Models\PageTypes\Blog\" />
     <Folder Include="Models\PageTypes\BlogArticle\" />
+    <Folder Include="Models\PageTypes\HomePage\" />
   </ItemGroup>
 
 

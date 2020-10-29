@@ -18,27 +18,27 @@ using CMS.DataEngine;
 using CMS.DocumentEngine;
 using CMS.DocumentEngine.Types.DeleteBoilerplate;
 
-[assembly: RegisterDocumentType(Blog.CLASS_NAME, typeof(Blog))]
+[assembly: RegisterDocumentType(Home.CLASS_NAME, typeof(Home))]
 
 namespace CMS.DocumentEngine.Types.DeleteBoilerplate
 {
 	/// <summary>
-	/// Represents a content item of type Blog.
+	/// Represents a content item of type Home.
 	/// </summary>
-	public partial class Blog : TreeNode
+	public partial class Home : TreeNode
 	{
 		#region "Constants and variables"
 
 		/// <summary>
 		/// The name of the data class.
 		/// </summary>
-		public const string CLASS_NAME = "DeleteBoilerplate.Blog";
+		public const string CLASS_NAME = "DeleteBoilerplate.Home";
 
 
 		/// <summary>
-		/// The instance of the class that provides extended API for working with Blog fields.
+		/// The instance of the class that provides extended API for working with Home fields.
 		/// </summary>
-		private readonly BlogFields mFields;
+		private readonly HomeFields mFields;
 
 		#endregion
 
@@ -46,52 +46,18 @@ namespace CMS.DocumentEngine.Types.DeleteBoilerplate
 		#region "Properties"
 
 		/// <summary>
-		/// BlogID.
+		/// HomeID.
 		/// </summary>
 		[DatabaseIDField]
-		public int BlogID
+		public int HomeID
 		{
 			get
 			{
-				return ValidationHelper.GetInteger(GetValue("BlogID"), 0);
+				return ValidationHelper.GetInteger(GetValue("HomeID"), 0);
 			}
 			set
 			{
-				SetValue("BlogID", value);
-			}
-		}
-
-
-		/// <summary>
-		/// Name.
-		/// </summary>
-		[DatabaseField]
-		public string Name
-		{
-			get
-			{
-				return ValidationHelper.GetString(GetValue("Name"), @"");
-			}
-			set
-			{
-				SetValue("Name", value);
-			}
-		}
-
-
-		/// <summary>
-		/// Description.
-		/// </summary>
-		[DatabaseField]
-		public string Description
-		{
-			get
-			{
-				return ValidationHelper.GetString(GetValue("Description"), @"");
-			}
-			set
-			{
-				SetValue("Description", value);
+				SetValue("HomeID", value);
 			}
 		}
 
@@ -131,10 +97,10 @@ namespace CMS.DocumentEngine.Types.DeleteBoilerplate
 
 
 		/// <summary>
-		/// Gets an object that provides extended API for working with Blog fields.
+		/// Gets an object that provides extended API for working with Home fields.
 		/// </summary>
 		[RegisterProperty]
-		public BlogFields Fields
+		public HomeFields Fields
 		{
 			get
 			{
@@ -144,71 +110,39 @@ namespace CMS.DocumentEngine.Types.DeleteBoilerplate
 
 
 		/// <summary>
-		/// Provides extended API for working with Blog fields.
+		/// Provides extended API for working with Home fields.
 		/// </summary>
 		[RegisterAllProperties]
-		public partial class BlogFields : AbstractHierarchicalObject<BlogFields>
+		public partial class HomeFields : AbstractHierarchicalObject<HomeFields>
 		{
 			/// <summary>
-			/// The content item of type Blog that is a target of the extended API.
+			/// The content item of type Home that is a target of the extended API.
 			/// </summary>
-			private readonly Blog mInstance;
+			private readonly Home mInstance;
 
 
 			/// <summary>
-			/// Initializes a new instance of the <see cref="BlogFields" /> class with the specified content item of type Blog.
+			/// Initializes a new instance of the <see cref="HomeFields" /> class with the specified content item of type Home.
 			/// </summary>
-			/// <param name="instance">The content item of type Blog that is a target of the extended API.</param>
-			public BlogFields(Blog instance)
+			/// <param name="instance">The content item of type Home that is a target of the extended API.</param>
+			public HomeFields(Home instance)
 			{
 				mInstance = instance;
 			}
 
 
 			/// <summary>
-			/// BlogID.
+			/// HomeID.
 			/// </summary>
 			public int ID
 			{
 				get
 				{
-					return mInstance.BlogID;
+					return mInstance.HomeID;
 				}
 				set
 				{
-					mInstance.BlogID = value;
-				}
-			}
-
-
-			/// <summary>
-			/// Name.
-			/// </summary>
-			public string Name
-			{
-				get
-				{
-					return mInstance.Name;
-				}
-				set
-				{
-					mInstance.Name = value;
-				}
-			}
-
-
-			/// <summary>
-			/// Description.
-			/// </summary>
-			public string Description
-			{
-				get
-				{
-					return mInstance.Description;
-				}
-				set
-				{
-					mInstance.Description = value;
+					mInstance.HomeID = value;
 				}
 			}
 
@@ -251,11 +185,11 @@ namespace CMS.DocumentEngine.Types.DeleteBoilerplate
 		#region "Constructors"
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="Blog" /> class.
+		/// Initializes a new instance of the <see cref="Home" /> class.
 		/// </summary>
-		public Blog() : base(CLASS_NAME)
+		public Home() : base(CLASS_NAME)
 		{
-			mFields = new BlogFields(this);
+			mFields = new HomeFields(this);
 		}
 
 		#endregion

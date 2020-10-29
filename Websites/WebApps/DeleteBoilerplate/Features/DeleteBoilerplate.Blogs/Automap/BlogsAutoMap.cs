@@ -16,7 +16,7 @@ namespace DeleteBoilerplate.Blogs.Automap
             CreateMap<Blog, BlogViewModel>(MemberList.None)
                 .ForMember(dst => dst.NodeGuid, opt => opt.MapFrom(src => src.NodeGUID))
                 .ForMember(dst => dst.Name, opt => opt.MapFrom(src => src.Name))
-                .ForMember(dst => dst.Title, opt => opt.MapFrom(src => src.Title));
+                .ForMember(dst => dst.Description, opt => opt.MapFrom(src => src.Description));
         }
     }
 }
