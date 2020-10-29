@@ -6,7 +6,6 @@ using DeleteBoilerplate.Blogs.Models.Blog;
 using Kentico.Content.Web.Mvc;
 using Kentico.Content.Web.Mvc.Routing;
 using Microsoft.AspNetCore.Mvc;
-using CMS.DocumentEngine;
 
 [assembly: RegisterPageRoute(Blog.CLASS_NAME, typeof(BlogController))]
 
@@ -21,10 +20,8 @@ namespace DeleteBoilerplate.Blogs.Controllers
 
         public IActionResult Index()
         {
-            var node = PageDataContextRetriever.Retrieve<TreeNode>().Page;
-            var blog = PageDataContextRetriever.Retrieve<Blog>().Page;
-
-            return View();
+            var blog = GetContextItemViewModel<Blog, BlogViewModel>();
+            return View(blog);
         }
     }
 }

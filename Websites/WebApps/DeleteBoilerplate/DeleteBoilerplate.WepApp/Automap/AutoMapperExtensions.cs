@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using DeleteBoilerplate.Blogs.Automap;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace DeleteBoilerplate.WepApp.Automap
@@ -10,6 +11,7 @@ namespace DeleteBoilerplate.WepApp.Automap
             var mapper = new MapperConfiguration(mc =>
             {
                 mc.AddProfile(new WebAppAutoMap());
+                mc.AddProfile(new BlogsAutoMap());
             }).CreateMapper();
 
             services.AddSingleton(mapper);
