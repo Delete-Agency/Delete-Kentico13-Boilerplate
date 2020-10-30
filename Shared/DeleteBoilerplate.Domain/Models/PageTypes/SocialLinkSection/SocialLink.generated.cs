@@ -80,40 +80,6 @@ namespace CMS.DocumentEngine.Types.DeleteBoilerplate
 
 
         /// <summary>
-        /// Url.
-        /// </summary>
-        [DatabaseField]
-        public string Url
-        {
-            get
-            {
-                return ValidationHelper.GetString(GetValue("Url"), @"");
-            }
-            set
-            {
-                SetValue("Url", value);
-            }
-        }
-
-
-        /// <summary>
-        /// Icon.
-        /// </summary>
-        [DatabaseField]
-        public Guid Icon1
-        {
-            get
-            {
-                return ValidationHelper.GetGuid(GetValue("Icon"), Guid.Empty);
-            }
-            set
-            {
-                SetValue("Icon", value);
-            }
-        }
-
-
-        /// <summary>
         /// Title.
         /// </summary>
         [DatabaseField]
@@ -126,6 +92,40 @@ namespace CMS.DocumentEngine.Types.DeleteBoilerplate
             set
             {
                 SetValue("Title", value);
+            }
+        }
+
+
+        /// <summary>
+        /// Social icon.
+        /// </summary>
+        [DatabaseField]
+        public Guid SocialIcon
+        {
+            get
+            {
+                return ValidationHelper.GetGuid(GetValue("SocialIcon"), Guid.Empty);
+            }
+            set
+            {
+                SetValue("SocialIcon", value);
+            }
+        }
+
+
+        /// <summary>
+        /// Url.
+        /// </summary>
+        [DatabaseField]
+        public string Url
+        {
+            get
+            {
+                return ValidationHelper.GetString(GetValue("Url"), @"");
+            }
+            set
+            {
+                SetValue("Url", value);
             }
         }
 
@@ -198,34 +198,6 @@ namespace CMS.DocumentEngine.Types.DeleteBoilerplate
 
 
             /// <summary>
-            /// Url.
-            /// </summary>
-            public string Url
-            {
-                get
-                {
-                    return mInstance.Url;
-                }
-                set
-                {
-                    mInstance.Url = value;
-                }
-            }
-
-
-            /// <summary>
-            /// Icon.
-            /// </summary>
-            public DocumentAttachment Icon
-            {
-                get
-                {
-                    return mInstance.GetFieldDocumentAttachment("Icon");
-                }
-            }
-
-
-            /// <summary>
             /// Title.
             /// </summary>
             public string Title
@@ -237,6 +209,34 @@ namespace CMS.DocumentEngine.Types.DeleteBoilerplate
                 set
                 {
                     mInstance.Title = value;
+                }
+            }
+
+
+            /// <summary>
+            /// Social icon.
+            /// </summary>
+            public DocumentAttachment SocialIcon
+            {
+                get
+                {
+                    return mInstance.GetFieldDocumentAttachment("SocialIcon");
+                }
+            }
+
+
+            /// <summary>
+            /// Url.
+            /// </summary>
+            public string Url
+            {
+                get
+                {
+                    return mInstance.Url;
+                }
+                set
+                {
+                    mInstance.Url = value;
                 }
             }
         }
