@@ -28,7 +28,7 @@ namespace DeleteBoilerplate.GenericComponents.Components
                     Name = x.Name,
                     Title = x.Title,
                     Url = x.Url,
-                    Icon = x.Fields.Icon.AttachmentName
+                    Icon = x.Fields.SocialIcon.AttachmentName
                 })
                 .ToList();
 
