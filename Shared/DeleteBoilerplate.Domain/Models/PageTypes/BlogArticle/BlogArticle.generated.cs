@@ -22,242 +22,275 @@ using CMS.DocumentEngine.Types.DeleteBoilerplate;
 
 namespace CMS.DocumentEngine.Types.DeleteBoilerplate
 {
-	/// <summary>
-	/// Represents a content item of type BlogArticle.
-	/// </summary>
-	public partial class BlogArticle : TreeNode
-	{
-		#region "Constants and variables"
+    /// <summary>
+    /// Represents a content item of type BlogArticle.
+    /// </summary>
+    public partial class BlogArticle : TreeNode
+    {
+        #region "Constants and variables"
 
-		/// <summary>
-		/// The name of the data class.
-		/// </summary>
-		public const string CLASS_NAME = "DeleteBoilerplate.BlogArticle";
-
-
-		/// <summary>
-		/// The instance of the class that provides extended API for working with BlogArticle fields.
-		/// </summary>
-		private readonly BlogArticleFields mFields;
-
-		#endregion
+        /// <summary>
+        /// The name of the data class.
+        /// </summary>
+        public const string CLASS_NAME = "DeleteBoilerplate.BlogArticle";
 
 
-		#region "Properties"
+        /// <summary>
+        /// The instance of the class that provides extended API for working with BlogArticle fields.
+        /// </summary>
+        private readonly BlogArticleFields mFields;
 
-		/// <summary>
-		/// BlogArticleID.
-		/// </summary>
-		[DatabaseIDField]
-		public int BlogArticleID
-		{
-			get
-			{
-				return ValidationHelper.GetInteger(GetValue("BlogArticleID"), 0);
-			}
-			set
-			{
-				SetValue("BlogArticleID", value);
-			}
-		}
+        #endregion
 
 
-		/// <summary>
-		/// Name.
-		/// </summary>
-		[DatabaseField]
-		public string Name
-		{
-			get
-			{
-				return ValidationHelper.GetString(GetValue("Name"), @"");
-			}
-			set
-			{
-				SetValue("Name", value);
-			}
-		}
+        #region "Properties"
+
+        /// <summary>
+        /// BlogArticleID.
+        /// </summary>
+        [DatabaseIDField]
+        public int BlogArticleID
+        {
+            get
+            {
+                return ValidationHelper.GetInteger(GetValue("BlogArticleID"), 0);
+            }
+            set
+            {
+                SetValue("BlogArticleID", value);
+            }
+        }
 
 
-		/// <summary>
-		/// Description.
-		/// </summary>
-		[DatabaseField]
-		public string Description
-		{
-			get
-			{
-				return ValidationHelper.GetString(GetValue("Description"), @"");
-			}
-			set
-			{
-				SetValue("Description", value);
-			}
-		}
+        /// <summary>
+        /// Name.
+        /// </summary>
+        [DatabaseField]
+        public string Name
+        {
+            get
+            {
+                return ValidationHelper.GetString(GetValue("Name"), @"");
+            }
+            set
+            {
+                SetValue("Name", value);
+            }
+        }
 
 
-		/// <summary>
-		/// Include in sitemap.
-		/// </summary>
-		[DatabaseField]
-		public bool IncludeInSitemap
-		{
-			get
-			{
-				return ValidationHelper.GetBoolean(GetValue("IncludeInSitemap"), true);
-			}
-			set
-			{
-				SetValue("IncludeInSitemap", value);
-			}
-		}
+        /// <summary>
+        /// Description.
+        /// </summary>
+        [DatabaseField]
+        public string Description
+        {
+            get
+            {
+                return ValidationHelper.GetString(GetValue("Description"), @"");
+            }
+            set
+            {
+                SetValue("Description", value);
+            }
+        }
 
 
-		/// <summary>
-		/// Sitemap priority.
-		/// </summary>
-		[DatabaseField]
-		public decimal SitemapPriority
-		{
-			get
-			{
-				return ValidationHelper.GetDecimal(GetValue("SitemapPriority"), ValidationHelper.GetDecimal("0.5", 0));
-			}
-			set
-			{
-				SetValue("SitemapPriority", value);
-			}
-		}
+        /// <summary>
+        /// Image.
+        /// </summary>
+        [DatabaseField]
+        public string Image
+        {
+            get
+            {
+                return ValidationHelper.GetString(GetValue("Image"), @"");
+            }
+            set
+            {
+                SetValue("Image", value);
+            }
+        }
 
 
-		/// <summary>
-		/// Gets an object that provides extended API for working with BlogArticle fields.
-		/// </summary>
-		[RegisterProperty]
-		public BlogArticleFields Fields
-		{
-			get
-			{
-				return mFields;
-			}
-		}
+        /// <summary>
+        /// Include in sitemap.
+        /// </summary>
+        [DatabaseField]
+        public bool IncludeInSitemap
+        {
+            get
+            {
+                return ValidationHelper.GetBoolean(GetValue("IncludeInSitemap"), true);
+            }
+            set
+            {
+                SetValue("IncludeInSitemap", value);
+            }
+        }
 
 
-		/// <summary>
-		/// Provides extended API for working with BlogArticle fields.
-		/// </summary>
-		[RegisterAllProperties]
-		public partial class BlogArticleFields : AbstractHierarchicalObject<BlogArticleFields>
-		{
-			/// <summary>
-			/// The content item of type BlogArticle that is a target of the extended API.
-			/// </summary>
-			private readonly BlogArticle mInstance;
+        /// <summary>
+        /// Sitemap priority.
+        /// </summary>
+        [DatabaseField]
+        public decimal SitemapPriority
+        {
+            get
+            {
+                return ValidationHelper.GetDecimal(GetValue("SitemapPriority"), ValidationHelper.GetDecimal("0.5", 0));
+            }
+            set
+            {
+                SetValue("SitemapPriority", value);
+            }
+        }
 
 
-			/// <summary>
-			/// Initializes a new instance of the <see cref="BlogArticleFields" /> class with the specified content item of type BlogArticle.
-			/// </summary>
-			/// <param name="instance">The content item of type BlogArticle that is a target of the extended API.</param>
-			public BlogArticleFields(BlogArticle instance)
-			{
-				mInstance = instance;
-			}
+        /// <summary>
+        /// Gets an object that provides extended API for working with BlogArticle fields.
+        /// </summary>
+        [RegisterProperty]
+        public BlogArticleFields Fields
+        {
+            get
+            {
+                return mFields;
+            }
+        }
 
 
-			/// <summary>
-			/// BlogArticleID.
-			/// </summary>
-			public int ID
-			{
-				get
-				{
-					return mInstance.BlogArticleID;
-				}
-				set
-				{
-					mInstance.BlogArticleID = value;
-				}
-			}
+        /// <summary>
+        /// Provides extended API for working with BlogArticle fields.
+        /// </summary>
+        [RegisterAllProperties]
+        public partial class BlogArticleFields : AbstractHierarchicalObject<BlogArticleFields>
+        {
+            /// <summary>
+            /// The content item of type BlogArticle that is a target of the extended API.
+            /// </summary>
+            private readonly BlogArticle mInstance;
 
 
-			/// <summary>
-			/// Name.
-			/// </summary>
-			public string Name
-			{
-				get
-				{
-					return mInstance.Name;
-				}
-				set
-				{
-					mInstance.Name = value;
-				}
-			}
+            /// <summary>
+            /// Initializes a new instance of the <see cref="BlogArticleFields" /> class with the specified content item of type BlogArticle.
+            /// </summary>
+            /// <param name="instance">The content item of type BlogArticle that is a target of the extended API.</param>
+            public BlogArticleFields(BlogArticle instance)
+            {
+                mInstance = instance;
+            }
 
 
-			/// <summary>
-			/// Description.
-			/// </summary>
-			public string Description
-			{
-				get
-				{
-					return mInstance.Description;
-				}
-				set
-				{
-					mInstance.Description = value;
-				}
-			}
+            /// <summary>
+            /// BlogArticleID.
+            /// </summary>
+            public int ID
+            {
+                get
+                {
+                    return mInstance.BlogArticleID;
+                }
+                set
+                {
+                    mInstance.BlogArticleID = value;
+                }
+            }
 
 
-			/// <summary>
-			/// Include in sitemap.
-			/// </summary>
-			public bool IncludeInSitemap
-			{
-				get
-				{
-					return mInstance.IncludeInSitemap;
-				}
-				set
-				{
-					mInstance.IncludeInSitemap = value;
-				}
-			}
+            /// <summary>
+            /// Name.
+            /// </summary>
+            public string Name
+            {
+                get
+                {
+                    return mInstance.Name;
+                }
+                set
+                {
+                    mInstance.Name = value;
+                }
+            }
 
 
-			/// <summary>
-			/// Sitemap priority.
-			/// </summary>
-			public decimal SitemapPriority
-			{
-				get
-				{
-					return mInstance.SitemapPriority;
-				}
-				set
-				{
-					mInstance.SitemapPriority = value;
-				}
-			}
-		}
-
-		#endregion
+            /// <summary>
+            /// Description.
+            /// </summary>
+            public string Description
+            {
+                get
+                {
+                    return mInstance.Description;
+                }
+                set
+                {
+                    mInstance.Description = value;
+                }
+            }
 
 
-		#region "Constructors"
+            /// <summary>
+            /// Image.
+            /// </summary>
+            public string Image
+            {
+                get
+                {
+                    return mInstance.Image;
+                }
+                set
+                {
+                    mInstance.Image = value;
+                }
+            }
 
-		/// <summary>
-		/// Initializes a new instance of the <see cref="BlogArticle" /> class.
-		/// </summary>
-		public BlogArticle() : base(CLASS_NAME)
-		{
-			mFields = new BlogArticleFields(this);
-		}
 
-		#endregion
-	}
+            /// <summary>
+            /// Include in sitemap.
+            /// </summary>
+            public bool IncludeInSitemap
+            {
+                get
+                {
+                    return mInstance.IncludeInSitemap;
+                }
+                set
+                {
+                    mInstance.IncludeInSitemap = value;
+                }
+            }
+
+
+            /// <summary>
+            /// Sitemap priority.
+            /// </summary>
+            public decimal SitemapPriority
+            {
+                get
+                {
+                    return mInstance.SitemapPriority;
+                }
+                set
+                {
+                    mInstance.SitemapPriority = value;
+                }
+            }
+        }
+
+        #endregion
+
+
+        #region "Constructors"
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BlogArticle" /> class.
+        /// </summary>
+        public BlogArticle() : base(CLASS_NAME)
+        {
+            mFields = new BlogArticleFields(this);
+        }
+
+        #endregion
+    }
 }

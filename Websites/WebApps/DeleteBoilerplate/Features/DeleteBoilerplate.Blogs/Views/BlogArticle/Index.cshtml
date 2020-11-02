@@ -1,0 +1,14 @@
+﻿@model DeleteBoilerplate.Blogs.Models.BlogArticle.BlogArticleViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>News @Model.Name</h2>
+<h3>@Model.Description</h3>
+
+<div>
+    @if (Model.Image != null)
+    {
+        <img srcset="@Model.Image.Url" alt="@Model.Image.Title" class="lazyload" />
+    }
+</div>

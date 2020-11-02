@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using AutoMapper;
 using CMS.DocumentEngine.Types.DeleteBoilerplate;
 using DeleteBoilerplate.Blogs.Controllers;
+using DeleteBoilerplate.Blogs.Models.BlogArticle;
+using DeleteBoilerplate.Infrastructure.Controllers;
+using Kentico.Content.Web.Mvc;
 using Kentico.Content.Web.Mvc.Routing;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,11 +11,17 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DeleteBoilerplate.Blogs.Controllers
 {
-    public class BlogArticleController : Controller
+    public class BlogArticleController : BaseController
     {
+        public BlogArticleController(IMapper mapper, IPageDataContextRetriever pageDataContextRetriever)
+      : base(mapper, pageDataContextRetriever)
+        {
+        }
+
         public IActionResult Index()
         {
-            return View();
+            var blogArticle = GetContextItemViewModel<BlogArticle, BlogArticleViewModel>();
+            return View(blogArticle);
         }
     }
 }

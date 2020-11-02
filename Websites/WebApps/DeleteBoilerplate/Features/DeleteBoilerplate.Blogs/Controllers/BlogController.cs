@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using CMS.DocumentEngine.Types.DeleteBoilerplate;
 using DeleteBoilerplate.Blogs.Controllers;
-using DeleteBoilerplate.Infrastructure.Controllers;
 using DeleteBoilerplate.Blogs.Models.Blog;
+using DeleteBoilerplate.Infrastructure.Controllers;
 using Kentico.Content.Web.Mvc;
 using Kentico.Content.Web.Mvc.Routing;
 using Microsoft.AspNetCore.Mvc;

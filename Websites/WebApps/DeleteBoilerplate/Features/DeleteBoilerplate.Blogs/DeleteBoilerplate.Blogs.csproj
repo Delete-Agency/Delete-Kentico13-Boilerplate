@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\Shared\DeleteBoilerplate.Common\DeleteBoilerplate.Common.csproj" />
     <ProjectReference Include="..\..\..\..\..\Shared\DeleteBoilerplate.Domain\DeleteBoilerplate.Domain.csproj" />
     <ProjectReference Include="..\..\..\..\Infrastructure\DeleteBoilerplate.Infrastructure\DeleteBoilerplate.Infrastructure.csproj" />
     <ProjectReference Include="..\..\DeleteBoilerplate.GenericComponents\DeleteBoilerplate.GenericComponents.csproj" />

@@ -19,53 +19,53 @@ using CMS.Helpers;
 
 namespace CMS.DocumentEngine.Types.DeleteBoilerplate
 {
-	/// <summary>
-	/// Provides methods for retrieving pages of type BlogArticle.
-	/// </summary>
-	public partial class BlogArticleProvider
-	{
-		/// <summary>
-		/// Returns a query that selects published pages of type BlogArticle.
-		/// </summary>
-		public static DocumentQuery<BlogArticle> GetBlogArticles()
-		{
-			return DocumentHelper.GetDocuments<BlogArticle>().PublishedVersion().Published();
-		}
+    /// <summary>
+    /// Provides methods for retrieving pages of type BlogArticle.
+    /// </summary>
+    public partial class BlogArticleProvider
+    {
+        /// <summary>
+        /// Returns a query that selects published pages of type BlogArticle.
+        /// </summary>
+        public static DocumentQuery<BlogArticle> GetBlogArticles()
+        {
+            return DocumentHelper.GetDocuments<BlogArticle>().PublishedVersion().Published();
+        }
 
 
-		/// <summary>
-		/// Returns a published page of type BlogArticle that matches the specified criteria.
-		/// </summary>
-		/// <param name="nodeId">The identifier of the content tree node that represents the page.</param>
-		/// <param name="siteName">The name of the site where the page belongs.</param>
-		/// <param name="cultureName">The name of the language, e.g. en-US, that determines which localized version should be retrieved.</param>
-		public static DocumentQuery<BlogArticle> GetBlogArticle(int nodeId, string cultureName, string siteName)
-		{
-			return GetBlogArticles().OnSite(siteName).Culture(cultureName).WhereEquals("NodeID", nodeId);
-		}
+        /// <summary>
+        /// Returns a published page of type BlogArticle that matches the specified criteria.
+        /// </summary>
+        /// <param name="nodeId">The identifier of the content tree node that represents the page.</param>
+        /// <param name="siteName">The name of the site where the page belongs.</param>
+        /// <param name="cultureName">The name of the language, e.g. en-US, that determines which localized version should be retrieved.</param>
+        public static DocumentQuery<BlogArticle> GetBlogArticle(int nodeId, string cultureName, string siteName)
+        {
+            return GetBlogArticles().OnSite(siteName).Culture(cultureName).WhereEquals("NodeID", nodeId);
+        }
 
 
-		/// <summary>
-		/// Returns a published page of type BlogArticle that matches the specified criteria.
-		/// </summary>
-		/// <param name="nodeGuid">The globally unique identifier of the content tree node that represents the page.</param>
-		/// <param name="siteName">The name of the site where the page belongs.</param>
-		/// <param name="cultureName">The name of the language, e.g. en-US, that determines which localized version should be retrieved.</param>
-		public static DocumentQuery<BlogArticle> GetBlogArticle(Guid nodeGuid, string cultureName, string siteName)
-		{
-			return GetBlogArticles().OnSite(siteName).Culture(cultureName).WhereEquals("NodeGUID", nodeGuid);
-		}
+        /// <summary>
+        /// Returns a published page of type BlogArticle that matches the specified criteria.
+        /// </summary>
+        /// <param name="nodeGuid">The globally unique identifier of the content tree node that represents the page.</param>
+        /// <param name="siteName">The name of the site where the page belongs.</param>
+        /// <param name="cultureName">The name of the language, e.g. en-US, that determines which localized version should be retrieved.</param>
+        public static DocumentQuery<BlogArticle> GetBlogArticle(Guid nodeGuid, string cultureName, string siteName)
+        {
+            return GetBlogArticles().OnSite(siteName).Culture(cultureName).WhereEquals("NodeGUID", nodeGuid);
+        }
 
 
-		/// <summary>
-		/// Returns a published page of type BlogArticle that matches the specified criteria.
-		/// </summary>
-		/// <param name="nodeAliasPath">The alias path to the content tree node that represents the page.</param>
-		/// <param name="siteName">The name of the site where the page belongs.</param>
-		/// <param name="cultureName">The name of the language, e.g. en-US, that determines which localized version should be retrieved.</param>
-		public static DocumentQuery<BlogArticle> GetBlogArticle(string nodeAliasPath, string cultureName, string siteName)
-		{
-			return GetBlogArticles().OnSite(siteName).Culture(cultureName).Path(nodeAliasPath);
-		}
-	}
+        /// <summary>
+        /// Returns a published page of type BlogArticle that matches the specified criteria.
+        /// </summary>
+        /// <param name="nodeAliasPath">The alias path to the content tree node that represents the page.</param>
+        /// <param name="siteName">The name of the site where the page belongs.</param>
+        /// <param name="cultureName">The name of the language, e.g. en-US, that determines which localized version should be retrieved.</param>
+        public static DocumentQuery<BlogArticle> GetBlogArticle(string nodeAliasPath, string cultureName, string siteName)
+        {
+            return GetBlogArticles().OnSite(siteName).Culture(cultureName).Path(nodeAliasPath);
+        }
+    }
 }
