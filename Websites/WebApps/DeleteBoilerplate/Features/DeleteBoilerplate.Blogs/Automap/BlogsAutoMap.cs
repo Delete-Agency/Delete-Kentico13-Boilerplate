@@ -3,10 +3,11 @@ using DeleteBoilerplate.Blogs.Models.Blog;
 using AutoMapper;
 using DeleteBoilerplate.Blogs.Models.BlogArticle;
 using DeleteBoilerplate.Infrastructure.ValueConverters;
+using DeleteBoilerplate.Domain.Models.BaseModels;
 
 namespace DeleteBoilerplate.Blogs.Automap
 {
-    public class BlogsAutoMap : Profile
+    public class BlogsAutoMap : Profile, IProfile
     {
         public BlogsAutoMap()
         {

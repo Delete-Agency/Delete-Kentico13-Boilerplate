@@ -1,9 +1,10 @@
 ﻿using AutoMapper;
 using DeleteBoilerplate.Common.Models.Media;
+using DeleteBoilerplate.Domain.Models.BaseModels;
 
 namespace DeleteBoilerplate.Infrastructure.Automap
 {
-    public class InfrastructureAutoMap : Profile
+    public class InfrastructureAutoMap : Profile, IProfile
     {
         public InfrastructureAutoMap()
         {

@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace DeleteBoilerplate.WepApp.Extensions
 {
-    public static class IServiceCollectionExtensions
+    public static class ServiceCollectionExtensions
     {
         public static void AddDeleteBoilerplateDependencies(this IServiceCollection services)
         {
