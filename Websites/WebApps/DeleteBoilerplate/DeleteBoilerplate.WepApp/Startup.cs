@@ -23,6 +23,7 @@ using DeleteBoilerplate.Domain.Repositories;
 using DeleteBoilerplate.WepApp.Extensions;
 using AutoMapper;
 using DeleteBoilerplate.WepApp.Automap;
+using DeleteBoilerplate.Infrastructure.Constants;
 
 namespace DeleteBoilerplate.WepApp
 {
@@ -42,7 +43,11 @@ namespace DeleteBoilerplate.WepApp
             // Enable desired Kentico Xperience features
             var kenticoServiceCollection = services.AddKentico(features =>
             {
-                features.UsePageBuilder();
+                features.UsePageBuilder(new PageBuilderOptions
+                {
+                    DefaultSectionIdentifier = SectionIdentifiers.ONE_COLUMN_SECTION,
+                    RegisterDefaultSection = false
+                });
                 // features.UseActivityTracking();
                 // features.UseABTesting();
                 // features.UseWebAnalytics();

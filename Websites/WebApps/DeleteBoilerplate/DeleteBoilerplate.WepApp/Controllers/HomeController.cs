@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using DeleteBoilerplate.Infrastructure.Controllers;
 using AutoMapper;
 
-[assembly: RegisterPageRoute(Home.CLASS_NAME, typeof(HomeController))]
+[assembly: RegisterPageRoute(Home.CLASS_NAME, typeof(HomeController), ActionName = "IndexHome")]
 
 namespace DeleteBoilerplate.WepApp.Controllers
 {
@@ -21,6 +21,11 @@ namespace DeleteBoilerplate.WepApp.Controllers
         }
 
         public IActionResult Index()
+        {
+            return View();
+        }
+
+        public IActionResult IndexHome()
         {
             return View();
         }

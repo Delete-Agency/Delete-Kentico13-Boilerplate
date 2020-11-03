@@ -1,15 +1,24 @@
 ﻿<!DOCTYPE html>
 <html>
-    <head>    
-        <!--META-->
-    </head>
-    <body>
-        <div>
-            @*@await Component.InvokeAsync("Header")*@
+<head id="head">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8" />
 
-            @RenderBody()
+    @RenderSection("styles", required: false)
 
-            @*@await Component.InvokeAsync("Footer")*@
-        </div>
-    </body>
+    <page-builder-styles />
+</head>
+<body>
+    <div>
+        @*@await Component.InvokeAsync("Header")*@
+
+        @RenderBody()
+
+        @*@await Component.InvokeAsync("Footer")*@
+    </div>
+
+    <page-builder-scripts />
+
+    @RenderSection("scripts", required: false)
+</body>
 </html>

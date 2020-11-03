@@ -10,6 +10,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\Shared\DeleteBoilerplate.Domain\DeleteBoilerplate.Domain.csproj" />
+    <ProjectReference Include="..\..\..\Infrastructure\DeleteBoilerplate.Infrastructure\DeleteBoilerplate.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AssemblyAttribute Include="CMS.AssemblyDiscoverableAttribute">
+    </AssemblyAttribute>
   </ItemGroup>
 
 </Project>
